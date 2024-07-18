@@ -20,17 +20,21 @@
 
 class RemoteController {
   public:
+    // Advanced approach funcs
+    void update();
+    bool hasValue(int value, uint8_t button);
+
+    // Moderate appoach func
     bool getPressed(uint8_t button);
+
+    // Simple approach func
     bool getPressedSimple(uint8_t button);
-    bool getDown(uint8_t button);
-    bool getUp(uint8_t button);
 
   private:
-    void clearPressed();
+    // Only used for the advanced approach
+    int pressed[15] = { 0 };
 
     #define RECV_PIN 7
-
-    bool pressed[14] = { 0 };
 
     // I DO NOT know whether these are the right raw data numbers, however, these were in the example code.
 

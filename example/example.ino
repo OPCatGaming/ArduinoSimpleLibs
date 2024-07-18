@@ -3,6 +3,7 @@
 #include "LineSensorController.h"
 #include "ServoController.h"
 #include "UltrasonicController.h"
+#include "RemoteController.h"
 #include "MPU6050.h"
 
 DriveController driver;
@@ -10,6 +11,7 @@ GyroscopeController gyroscope;
 LineSensorController lineSensor;
 ServoController servo;
 UltrasonicController ultrasonic;
+RemoteController remote;
 
 MPU6050 accelgyro;
 
@@ -30,13 +32,30 @@ void moveAndPing(int angle) {
   }
 
 void loop() {
-  for (int i = 0; i < 180; i++) {
-    moveAndPing(i);
-  }
+  // How to use my RemoteController class
+  // Advanced:
+  remote.update(); // You need this every time you want to refresh the inputs.
+  // Values: 0 = not pressed, 1 = pressed, 2 = just down, 3 = just up
+  remote.hasValue(1, BTN_UP); // This gets whether the up button is currently pressed.
 
-  for (int i = 180; i > 0; i--) {
-    moveAndPing(i);
-  }
+  // Moderate:
+  remote.getPressed(BTN_UP); // This gets whether the up button is currently pressed.
+
+  // Simple
+  remote.getPressedSimple(BTN_UP); // This gets whether the up button is currently pressed.
+
+
+
+
+
+
+  // for (int i = 0; i < 180; i++) {
+  //   moveAndPing(i);
+  // }
+
+  // for (int i = 180; i > 0; i--) {
+  //   moveAndPing(i);
+  // }
 
   // if (x_rot < -5) {
   //   // Moves fwd at speed 35 units
