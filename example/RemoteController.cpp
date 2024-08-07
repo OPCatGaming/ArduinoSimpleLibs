@@ -2,6 +2,10 @@
 
 IRrecv irrecv(RECV_PIN);
 
+void RemoteController::setup() {
+  irrecv.enableIRIn()
+}
+
 // The most advanced approach i've made.
 void RemoteController::update() {
   // Make sure a signal from the remote is detected.

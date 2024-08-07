@@ -21,6 +21,7 @@ void setup() {
   driver.setupPins();
   ultrasonic.setupPins();
   gyroscope.initializeGyroscope();
+  remote.setup();
   Serial.begin(9600);
 }
 

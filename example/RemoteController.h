@@ -20,6 +20,9 @@
 
 class RemoteController {
   public:
+    // Needed for all funcs to work
+    void setup();
+
     // Advanced approach funcs
     void update();
     bool hasValue(int value, uint8_t button);
